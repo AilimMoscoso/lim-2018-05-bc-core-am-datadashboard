@@ -6,17 +6,6 @@ const listUsers = document.getElementById('users');
 const search = document.getElementById('search');
 const filter = document.getElementById('filters');
 
-const option = {
-  cohort : null,
-  cohortData: {
-    users : [],
-    progress : {},
-  },
-  orderBy:'name',
-  orderDirection : 'ASC',
-  search: ''
-}
-
 const getJSON = (url, callback) => {
   const request = new XMLHttpRequest();
   request.open('GET', url);
@@ -24,6 +13,7 @@ const getJSON = (url, callback) => {
   request.onerror = handleError;
   request.send();
 }
+
 const handleError = () => {
   console.log('Se ha presentado un error');
 }
@@ -70,16 +60,26 @@ const addUsers = (usuario) => {
   });
 }
 // Selección de Cohort
-select.addEventListener('change', e => {
-  e.preventDefault();
-  //users.innerHTML = '';
+select.addEventListener('change', () => {
+  users.innerHTML = '';
   if (select.value === 'lim-2018-03-pre-core-pw') {
-    console.log()
     addUsers(listUsuarioComputerUser)
   } else {
     alert('Sin datos para mostrar');
+
   }
 });
+
+const option = {
+  cohort : null,
+  cohortData: {
+    users : [],
+    progress : {},
+  },
+  orderBy:'name',
+  orderDirection : 'ASC',
+  search: ''
+}
 
 //Buscar en input
 document.getElementById('ok').addEventListener('click', (e) => {
@@ -88,8 +88,7 @@ document.getElementById('ok').addEventListener('click', (e) => {
   let search = document.getElementById('search').value;
   option.search = search;
   const resultadoFinal = processCohortData(option);
-  console.log(resultadoFinal)
-  
-  //listUsuarioComputerUser.value = filter;
+  //console.log(resultadoFinal)
+  //return estudiantesFiltradas;
 });
 

@@ -175,6 +175,7 @@ const sortUsers = (usersStat, orderBy, orderDirection) => {
   });
   if (orderDirection === "DESC") result.reverse();
   console.log(result);
+  // document.getElementById('data').style.display = 'block';
   return result
 }
 //Buscar estudiantes por nombre
@@ -187,8 +188,8 @@ window.filterUsers = (users, search) => {
     if (name.includes(lowerSearch))
       result.push(user);
   });
-  console.log(result);
-  // addUsers(result);
+  //console.log(result);
+  addUsers(result);
   return result;
 }
 
