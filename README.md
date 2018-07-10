@@ -13,11 +13,7 @@
 
 *A través de una investigación con los usuarios finales se definió información relevante con la que se podía interactuar cómo el porcentaje de ejercicios resueltos de cada estudiante, la cantidad de lecturas leídas y quizzes resueltos. Estos datos se pueden filtrar por alumna y ordenar de forma ascendente o descendente.*
 
-*Es importante recalcar que la información podrá visualizarce previamente se haya ingresado con usuario y contraseña corporativa.*
-
-Cuáles son los datos más relevantes que quieren ver en la interfaz y por qué. Cómo los descubriste. La información relevante a visualizarse será el porcentaje de completitud de todos los cursos y grado de completitud de: lecturas, ejercicios autocorregidos y quizzes. Porque con ellos las TMs tendrán un mejor entendimiento del progreso de las estudiantes en su proceso de aprendizaje. Los descubrimos mediante: la exposición de requerimientos del usuario, la entrevista y el READme.md del poyecto.
-Cuándo revisan normalmente estos datos los usuarios. Finalizando un proyecto.
-Cómo crees que el producto les está resolviendo sus problemas. Contar con un dashboard les brindá accesibilidad a piezas de información importantes en lugar de trabajar con data acumulada. Es importante tener visualizaciones para entender mejor, hacer seguimiento y finalmente tomar decisiones apropiadas sobre información relevante sobretodo sí tiene repercusión sobre los resultados que buscan.
+*Es importante recalcar que la información podrá visualizarce previamente se haya ingresado con usuario y contraseña corporativa.
 
 Entrevista
 

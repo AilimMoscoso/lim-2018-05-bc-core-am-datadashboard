@@ -1,41 +1,143 @@
-/*window.ComputerUsersStats = (user,progress,cohort) => {
-
-
-
-
+let listUsuarioComputerUser = [];
+window.computeUsersStats = (users, progress, courses) => {
+    users.map(usuario => {
+        const UsuarioNuevo = NuevoUsuarioStats(usuario, progress[usuario.id], courses);
+        listUsuarioComputerUser.push(UsuarioNuevo);
+    });
+    return listUsuarioComputerUser;
 }
-
-function getProgress () {
-    const getProgressUsers = new XMLHttpRequest();
-    getProgressUsers.open('GET', '../data/cohorts/lim-2018-03-pre-core-pw/progress.json');
-    getProgressUsers.onload = function (event) {
-      progressUsers = JSON.parse(event.target.responseText);
+const NuevoUsuarioStats = (usuario, progress, courses) => {
+    let nameUser = usuario.name;
+    let usersWithStats = {}
+    usersWithStats.stats = {
+        percent: computerUserPercent(progress, courses),
+        exercises: computerExercises(progress, courses),
+        reads: computerUsersRead(progress, courses),
+        quizzes: computerUserQuizz(progress, courses),
     }
-    getProgressUsers.send();
-  }
-  
-  function getUsers (cohort) { //le pongo un parametro que es el selector
-    const getName = new XMLHttpRequest(); //creo una nueva instancia
-    getName.open('GET', '../data/cohorts/lim-2018-03-pre-core-pw/users.json'); //le digo q llame al url
-    getName.onload = addUsers; //agrego la funcion para mostrar la lista de users
-      function addUsers () {
-      const names = JSON.parse(this.responseText); // me la va formatear en json
-      let array=[]; //creo array vacio para almacenar los users correspondientes al cohort
-      names.forEach(users => { // recorre la respuesta del cohort por cada elemento
-        if (cohort === users.signupCohort) {//cuando comparo el valor del selector con el names.signup
-          array.push(users); //cuando cumple esa funcion, en el array vacio adiciona los elementos
-          let li = document.createElement('li'); //almaceno en una variable las opciones q voy a crear
-          let a = document.createElement('a'); 
-          a.innerHTML = users.name;
-          a.addEventListener("click", function () {
-            document.getElementById("user").innerHTML = JSON.stringify(users);//convierte de objeto a string, lo invero del parse
-            document.getElementById("progress").innerHTML = JSON.stringify(progressUsers[users.id]);
-            console.log(progressUsers[users.id]);
-          });
-          li.appendChild(a); //las inserto en el html
-          lista.appendChild(li); //agrego todas las opciones
+    usersWithStats.name = nameUser;
+    return usersWithStats;
+}
+const computerUserPercent = (progress, courses) => {
+    try {
+        return progress[courses].percent;
+    } catch (error) {
+        return 0;
+    }
+}
+const computerExercises = (progress, courses) => {
+    let cont = 0;
+    let contComplet = 0;
+    try {
+        courses.map((curso) => {
+            const valorUnits = Object.keys(progress[curso].units);
+            valorUnits.map((nombreUnits) => {
+                const valorParts = Object.keys(progress[curso].units[nombreUnits].parts);
+                valorParts.map((nombreParts) => {
+                    const valorExcercises = progress[curso].units[nombreUnits].parts[nombreParts];
+                    if (valorExcercises.hasOwnProperty('exercises')) {
+                        const nombreExercises = valorExcercises.exercises;
+                        cont += Object.keys(nombreExercises).length;
+                        const valorCompletado = Object.keys(valorExcercises.exercises);
+                        valorCompletado.map((nombreExercises) => {
+                            const valorCompleted = progress[curso].units[nombreUnits].parts[nombreParts].exercises[nombreExercises].completed;
+                            if (valorCompleted == 1) {
+                                contComplet += valorCompleted;
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    } catch (error) {
+        let exercises = {
+            total: 0,
+            completed: 0,
+            percent: 0,
         }
-      });
+        return exercises;
     }
-    getName.send();//si no se pone, no envia nada
-  }*/
+    let exercises = {
+        total: cont,
+        completed: contComplet,
+        percent: (contComplet / cont) * 100,
+    }
+    return exercises;
+};
+const computerUsersRead = (progress, courses) => {
+    let cont = 0;
+    let contComplet = 0;
+    try {
+        courses.map((curso) => {
+            const valorUnits = Object.keys(progress[curso].units);
+            valorUnits.map((nombreUnits) => {
+                const valorParts = Object.keys(progress[curso].units[nombreUnits].parts);
+                valorParts.map((nombreParts) => {
+                    const valorType = progress[curso].units[nombreUnits].parts[nombreParts];
+                    if (valorType.type == "read") {
+                        cont++;
+                    }
+                    if (valorType.type == "read" && valorType.completed == 1) {
+                        contComplet++;
+                    }
+                });
+            });
+        });
+    } catch (error) {
+        let reads = {
+            total: 0,
+            completed: 0,
+            percent: 0,
+        }
+        return reads;
+    }
+
+    let reads = {
+        total: cont,
+        completed: contComplet,
+        percent: Math.round((contComplet / cont) * 100),
+    }
+    return reads;
+}
+const computerUserQuizz = (progress, courses) => {
+    let cont = 0;
+    let contComplet = 0;
+    let contscoreAvg = 0
+    try {
+        courses.map((curso) => {
+            const valorUnits = Object.keys(progress[curso].units);
+            valorUnits.map((nombreUnits) => {
+                const valorParts = Object.keys(progress[curso].units[nombreUnits].parts);
+                valorParts.map((nombreParts) => {
+                    const valorType = progress[curso].units[nombreUnits].parts[nombreParts];
+                    if (valorType.type == "quiz") {
+                        cont++;
+                    }
+                    if (valorType.type == "quiz" && valorType.completed == 1) {
+                        contComplet++;
+                    }
+                    if (valorType.type == "quiz" && valorType.completed == 1 && valorType.score) {
+                        contscoreAvg += valorType.score;
+                    }
+                });
+            });
+        });
+    } catch (error) {
+        let quizzes = {
+            total: 0,
+            completed: 0,
+            percent: 0,
+            scoreSum: 0,
+            scoreAvg: 0,
+        }
+        return quizzes;
+    }
+    let quizzes = {
+        total: cont,
+        completed: contComplet,
+        percent: Math.round((contComplet / cont) * 100),
+        scoreSum: contscoreAvg,
+        scoreAvg: Math.round(contscoreAvg / contComplet),
+    }
+    return quizzes;
+}
