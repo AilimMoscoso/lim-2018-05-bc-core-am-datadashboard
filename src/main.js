@@ -4,7 +4,6 @@ const urlProgress = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const select = document.getElementById('select');
 const listUsers = document.getElementById('users');
 const search = document.getElementById('search');
-const filter = document.getElementById('filters');
 
 const getJSON = (url, callback) => {
   const request = new XMLHttpRequest();
@@ -17,6 +16,7 @@ const getJSON = (url, callback) => {
 const handleError = () => {
   console.log('Se ha presentado un error');
 }
+
 const addUserProgress = () => {
   const courses = ["intro"]
   const users = JSON.parse(event.target.responseText);
@@ -40,6 +40,7 @@ const addUserProgress = () => {
   getJSON(urlProgress, progress);
   getJSON(urlCohorts, courses);
 }
+
 getJSON(urlUser, addUserProgress);
 
 const addUsers = (usuario) => {
@@ -59,14 +60,14 @@ const addUsers = (usuario) => {
     listUsers.appendChild(listUser);
   });
 }
+
 // Selección de Cohort
 select.addEventListener('change', () => {
   users.innerHTML = '';
   if (select.value === 'lim-2018-03-pre-core-pw') {
-    addUsers(listUsuarioComputerUser)
+    addUsers(listUsuarioComputerUser);
   } else {
     alert('Sin datos para mostrar');
-
   }
 });
 
@@ -89,6 +90,16 @@ document.getElementById('ok').addEventListener('click', (e) => {
   option.search = search;
   const resultadoFinal = processCohortData(option);
   //console.log(resultadoFinal)
+  addUsers(resultadoFinal);
   //return estudiantesFiltradas;
 });
 
+//Buscar en el select de ordenamiento
+orderBy.addEventListener('change', () => { debugger
+  if(orderBy.value === 'name'){
+    addUsers(listUsuarioComputerUser);
+  }else{
+    alert('arroja datos');
+  }
+
+});

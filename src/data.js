@@ -181,21 +181,21 @@ const sortUsers = (usersStat, orderBy, orderDirection) => {
 //Buscar estudiantes por nombre
 
 window.filterUsers = (users, search) => {
-  let result = [];
+  let result2 = [];
   users.forEach(user => {
     const name = user.name.toLowerCase();
     const lowerSearch = search.toLowerCase();
     if (name.includes(lowerSearch))
-      result.push(user);
+      result2.push(user);
   });
-  //console.log(result);
-  addUsers(result);
-  return result;
+  console.log(result2);
+  //addUsers(result);
+  return result2;
 }
 
 window.processCohortData = (options) => {
   let estudiantes = computeUsersStats(options.cohortData.users, options.cohortData.progress, options.cohort);
   let estudiantesOrdenadas = sortUsers(estudiantes, options.orderBy, options.orderDirection);
-  let estudiantesFiltradas = filterUsers(estudiantesOrdenadas, option.search);
+  let estudiantesFiltradas = filterUsers(estudiantes, option.search);
   return estudiantesFiltradas;
 }
