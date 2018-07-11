@@ -1,6 +1,6 @@
-let listUsuarioComputerUser = [];
 
 window.computeUsersStats = (users, progress, courses) => {
+let listUsuarioComputerUser = [];  
   users.map(usuario => {
     const UsuarioNuevo = NuevoUsuarioStats(usuario, progress[usuario.id], courses);
     listUsuarioComputerUser.push(UsuarioNuevo);
@@ -149,8 +149,10 @@ const computerUserQuizz = (progress, courses) => {
 }
 
 //Ordena la lista
-
 const sortUsers = (usersStat, orderBy, orderDirection) => {
+  //console.log(usersStat);
+  //console.log(orderBy);
+  //console.log(orderDirection);
   function func (userStat) {
     switch (orderBy) {
       case "name":
@@ -174,9 +176,10 @@ const sortUsers = (usersStat, orderBy, orderDirection) => {
     return (a < b) ? -1 : ((a > b) ? 1 : 0);
   });
   if (orderDirection === "DESC") result.reverse();
-  console.log(result);
+  //console.log(result);
   // document.getElementById('data').style.display = 'block';
   return result
+
 }
 //Buscar estudiantes por nombre
 
@@ -188,14 +191,20 @@ window.filterUsers = (users, search) => {
     if (name.includes(lowerSearch))
       result2.push(user);
   });
-  console.log(result2);
-  //addUsers(result);
+  //console.log(result2);
   return result2;
 }
 
 window.processCohortData = (options) => {
+  //console.log(options);
   let estudiantes = computeUsersStats(options.cohortData.users, options.cohortData.progress, options.cohort);
+  console.log(estudiantes);
   let estudiantesOrdenadas = sortUsers(estudiantes, options.orderBy, options.orderDirection);
+  console.log(estudiantes);
   let estudiantesFiltradas = filterUsers(estudiantes, option.search);
-  return estudiantesFiltradas;
+  console.log(estudiantesFiltradas);
+  // addUsers(estudiantes)
+  
+  return estudiantes;
+
 }

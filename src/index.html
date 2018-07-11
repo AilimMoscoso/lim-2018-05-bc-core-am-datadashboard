@@ -4,13 +4,33 @@
 <head>
   <meta charset="utf-8">
   <title>Laboratoria Dashboard</title>
-  <meta name="viewport" content="width = devide-width, user-scalable = no, initial-scale = 1.0">
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <header>
     <img src="../img/logo.jpg" class="logo">
+    <img src="../img/p.jpg" class="titulo">
+    <img src="../img/ale.jpg" class="ale">
+    <div class="filters">
+      <select id="select">
+        <option value="1" selected disabled>Seleccione Generación</option>
+      </select>
+      <select id="orderBy">
+        <option value="" selected disabled>Ordenar por</option>
+        <option value="name">Nombre</option>
+        <option value="total-percent">% Completitud total</option>
+        <option value="exercises-percent">% Ejercicios completados</option>
+        <option value="quizzes-percent">% Quizzes completados</option>
+        <option value="read-percent">% Lecturas completadas</option>
+        <option value="quizzes-avg">Score de quizzes</option>
+      </select>
+      <button id="orderDirection">ASC/DESC</button>
+      <form action="">
+        <input id="search" type="text" placeholder="Ingrese Nombre" required>
+        <input id="Buscar" type="submit" value="Buscar">
+      </form>
+    </div>
   </header>
   <div class="container">
     <div class="container-menu">
@@ -19,7 +39,7 @@
 
           <!-- habilitar cohort navegacion -->
           <li class="menu">
-            <a id="cohorts" href="#">Cohorts</a>
+            <a id="students" href="#">Cohorts</a>
           </li>
           <!-- habilitar student navegacion -->
           <li class="menu">
@@ -32,34 +52,6 @@
         </ul>
       </nav>
     </div>
-    <div class = "filters">
-    <select id="select">
-      <option value="1" selected disabled>Seleccione Generación</option>
-    </select>
-    <select id="orderby">
-      <option value="" selected disabled>Ordenar por</option>
-      <optgroup label="Ascendente">
-      <option value="name">Nombre</option>
-        <option value="totalCompleted">% Completitud total</option>
-        <option value="excercises">% Ejercicios completados</option>
-        <option value="quizzes">% Quizzes completados</option>
-        <option value="reads">% Lecturas completadas</option>
-        <option value="score">Score de quizzes</option>
-      </optgroup>
-      <optgroup label="Descendente">
-        <option value="nameDesc">Nombre</option>
-        <option value="completedDesc">% Completitud total</option>
-        <option value="exercisesDesc">% Ejercicios completados</option>
-        <option value="quizzesDesc">% Quizzes completados</option>
-        <option value="readsDesc">% Lecturas completadas</option>
-        <option value="scoreDesc">Score de quizzes</option>
-      </optgroup>
-    </select>
-    <form action="">
-      <input id="search" type="text" placeholder="Ingrese Nombre" required>
-      <input id="ok" type="submit" value="Ok">
-    </form>
-  </div>
     <div class="data">
       <ol id="users" type="1">
       </ol>
