@@ -54,7 +54,7 @@ Exposición de requerimientos por parte del usuario
 
 *Respecto al diseño, se escogió una interface adaptada a la plataforma que ya existe en Laboratoria, debido a que la apliación web formará parte de uno más de los servicios que brinde el rol. Para este objetivo se utilizó como herramienta Figma.*
 
-![prototipo](../img/prototipoalta.jpg)
+![prototipo](https://github.com/AilimMoscoso/lim-2018-05-bc-core-am-datadashboard/blob/develop/img/prototipoalta.jpg)
 
 
 
