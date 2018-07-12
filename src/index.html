@@ -17,15 +17,17 @@
         <option value="1" selected disabled>Seleccione Generación</option>
       </select>
       <select id="orderBy">
-        <option value="" selected disabled>Ordenar por</option>
-        <option value="name">Nombre</option>
+        <option value="name" selected>Nombre</option>
         <option value="total-percent">% Completitud total</option>
         <option value="exercises-percent">% Ejercicios completados</option>
         <option value="quizzes-percent">% Quizzes completados</option>
         <option value="read-percent">% Lecturas completadas</option>
         <option value="quizzes-avg">Score de quizzes</option>
       </select>
-      <button id="orderDirection">ASC/DESC</button>
+      <select id="orderDirection">
+        <option value="ASC" selected>ASC</option>
+        <option value="DESC">DESC</option>
+      </select>
       <form action="">
         <input id="search" type="text" placeholder="Ingrese Nombre" required>
         <input id="Buscar" type="submit" value="Buscar">

@@ -1,4 +1,3 @@
-
 window.computeUsersStats = (users, progress, courses) => {
 let listUsuarioComputerUser = [];  
   users.map(usuario => {
@@ -158,7 +157,7 @@ const sortUsers = (usersStat, orderBy, orderDirection) => {
       case "name":
         return userStat.name.toLowerCase();
       case "total-percent":
-        return userStat.percent;
+        return userStat.stats.percent;
       case "exercises-percent":
         return userStat.stats.exercises.percent;
       case "quizzes-percent":
@@ -199,12 +198,9 @@ window.processCohortData = (options) => {
   //console.log(options);
   let estudiantes = computeUsersStats(options.cohortData.users, options.cohortData.progress, options.cohort);
   console.log(estudiantes);
-  let estudiantesOrdenadas = sortUsers(estudiantes, options.orderBy, options.orderDirection);
+  estudiantes = filterUsers(estudiantes, option.search);
   console.log(estudiantes);
-  let estudiantesFiltradas = filterUsers(estudiantes, option.search);
-  console.log(estudiantesFiltradas);
-  // addUsers(estudiantes)
-  
+  estudiantes = sortUsers(estudiantes, options.orderBy, options.orderDirection);
+  console.log(estudiantes);
   return estudiantes;
-
 }

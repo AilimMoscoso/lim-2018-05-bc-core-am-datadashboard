@@ -4,7 +4,7 @@ const urlProgress = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const select = document.getElementById('select');
 const listUsers = document.getElementById('users');
 const search = document.getElementById('search');
-const  orderBy = document.getElementById('orderBy');
+const orderBy = document.getElementById('orderBy');
 const button = document.getElementById('orderDirection');
 
 //Objeto Option
@@ -49,7 +49,7 @@ const addUserProgress = () => {
   const progress = () => {
     const progress = JSON.parse(event.target.responseText);
     option.cohortData.progress = progress;
-    let usersStats = processCohortData(option);
+    //let usersStats = processCohortData(option);
   }
   getJSON(urlProgress, progress);
   getJSON(urlCohorts, courses);
@@ -58,6 +58,7 @@ const addUserProgress = () => {
 getJSON(urlUser, addUserProgress);
 
 const addUsers = (usuario) => {
+  listUsers.innerHTML = '';
   usuario.map((valorusuario) => {
     let listUser = document.createElement('li');
     listUser.innerHTML = valorusuario.name + '<p>' +
@@ -77,10 +78,8 @@ const addUsers = (usuario) => {
 
 // Selección de Cohort
 select.addEventListener('change', () => {
-  listUsers.innerHTML = '';
   if (select.value === 'lim-2018-03-pre-core-pw') {
-    console.log(option)
-    const resultadoDeEstudiantes = processCohortData(option);
+    const resultadoDeEstudiantes = processCohortData(option);;
     addUsers(resultadoDeEstudiantes);
   } else {
     alert('Sin datos para mostrar');
@@ -94,26 +93,21 @@ document.getElementById('Buscar').addEventListener('click', (e) => {
   let search = document.getElementById('search').value;
   option.search = search;
   const resultadoFinal = processCohortData(option);
-  console.log(resultadoFinal);
-  //console.log(resultadoFinal)
-  //addUsers(resultadoFinal);
+  addUsers(resultadoFinal);
   //return estudiantesFiltradas;
 });
 
 //Buscar en el select de ordenamiento
-orderBy.addEventListener('change', () => { 
-  listUsers.innerHTML = '';
+orderBy.addEventListener('change', () => {
   option.orderBy = event.target.value;
-  //processCohortData(option);
-
+  option.orderDirection = document.getElementById("orderDirection").value;
+  const resultadoFinal = processCohortData(option);
+  addUsers(resultadoFinal);
 });
 
 //Evento del botón ASC/DESC
-orderDirection.addEventListener('toggle', () => {
-  if (option.orderDirection === 'ASC') {
-    option.orderDirection = 'DESC';
-  } else {
-    option.orderDirection = 'ASC';
-  }
-}
-)
+orderDirection.addEventListener('change', () => {
+  option.orderDirection = document.getElementById("orderDirection").value;
+  const resultadoFinal = processCohortData(option);
+  addUsers(resultadoFinal);
+});
