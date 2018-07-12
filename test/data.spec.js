@@ -59,6 +59,7 @@ describe('data', () => {
           completed: 2,
           percent: 67,
           scoreAvg: 29,
+          scoreSum: 57,
         });
       });
 
@@ -76,7 +77,53 @@ describe('data', () => {
 
   describe('sortUsers(users, orderBy, orderDirection)', () => {
 
-    it('debería retornar arreglo de usuarios ordenado por nombre ASC');
+    const name1 =  { 
+     name: "Zarela Zanabria",
+     stats: { 
+       reads:{
+         total: 5,
+         completed: 5,
+         percent: 50
+       },
+      quizzes: {
+       total: 10,
+       completed: 5,
+       percent: 50,
+       scoreSum: 50,
+       scoreAvg: 10
+     },
+      percent: 50,
+      exercises:  {
+       total: 10,
+       completed: 5,
+       percent: 50
+     }, } }
+const name2 = {
+   name: "Ailim",
+  stats:{ 
+   reads: {
+     total: 10,
+     completed: 10,
+     percent: 100
+   },
+   quizzes: {
+     total: 10,
+     completed: 10,
+     percent: 100,
+     scoreSum: 1000,
+     scoreAvg: 100
+   },
+   percent: 100,
+   exercises:{
+     total: 10,
+     completed: 10,
+     percent: 100
+   }, } }  
+
+   let estudiantes = [name2, name1];
+    it('debería retornar arreglo de usuarios ordenado por nombre ASC',()=>{
+      assert.deepEqual(window.sortUsers(estudiantes, "name", "ASC"), [name2, name1])
+    });
     it('debería retornar arreglo de usuarios ordenado por nombre DESC');
     it('debería retornar arreglo de usuarios ordenado por porcentaje general ASC');
     it('debería retornar arreglo de usuarios ordenado por porcentaje general DESC');

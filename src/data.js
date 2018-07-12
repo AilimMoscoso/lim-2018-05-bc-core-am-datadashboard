@@ -148,7 +148,7 @@ const computerUserQuizz = (progress, courses) => {
 }
 
 //Ordena la lista
-const sortUsers = (usersStat, orderBy, orderDirection) => {
+window.sortUsers = (usersStat, orderBy, orderDirection) => {
   //console.log(usersStat);
   //console.log(orderBy);
   //console.log(orderDirection);

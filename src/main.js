@@ -61,17 +61,17 @@ const addUsers = (usuario) => {
   listUsers.innerHTML = '';
   usuario.map((valorusuario) => {
     let listUser = document.createElement('li');
-    listUser.innerHTML = valorusuario.name + '<p>' +
-      'Percent : ' + valorusuario.stats.percent + '%' + '<p>' +
-      'Total exercises : ' + valorusuario.stats.exercises.total + '<p>' +
-      'Total complete exercises: ' + valorusuario.stats.exercises.completed + '<p>' +
-      'Percent exercises  : ' + valorusuario.stats.exercises.percent + '%' + '<p>' +
-      'Total readings : ' + valorusuario.stats.reads.total + '<p>' +
-      'Total full readings: ' + valorusuario.stats.reads.completed + '<p>' +
-      'Percent readings  : ' + valorusuario.stats.reads.percent + '%' + '<p>' +
-      'Total quizzes : ' + valorusuario.stats.quizzes.total + '<p>' +
-      'Total complete quizzes: ' + valorusuario.stats.quizzes.completed + '<p>' +
-      'Percent quizzes : ' + valorusuario.stats.quizzes.percent + '%' + '<p>';
+    listUser.innerHTML = valorusuario.name.toUpperCase().bold() + '<p>' +
+      '% Completitud total: '.italics() + (valorusuario.stats.percent + '%' + '<p>').bold() +
+      'Ejercicios totales: '.italics() + (valorusuario.stats.exercises.total + '<p>').bold() +
+      'Ejercicios completados: '.italics() + (valorusuario.stats.exercises.completed + '<p>').bold() +
+      '% Ejercicios completados: '.italics() + (valorusuario.stats.exercises.percent + '%' + '<p>').bold() +
+      'Lecturas totales: '.italics() + (valorusuario.stats.reads.total + '<p>').bold() +
+      'Lecturas completadas: '.italics() + (valorusuario.stats.reads.completed + '<p>').bold() +
+      '% Lecturas completadas: '.italics() + (valorusuario.stats.reads.percent + '%' + '<p>').bold() +
+      'Quizzes totales: '.italics() + (valorusuario.stats.quizzes.total + '<p>').bold() +
+      'Quizzes completadas: '.italics() + (valorusuario.stats.quizzes.completed + '<p>').bold() +
+      '% Quizzes completadas: '.italics() + (valorusuario.stats.quizzes.percent + '%' + '<p>').bold();
     listUsers.appendChild(listUser);
   });
 }
