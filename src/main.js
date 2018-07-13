@@ -105,7 +105,7 @@ orderBy.addEventListener('change', () => {
   addUsers(resultadoFinal);
 });
 
-//Evento del botón ASC/DESC
+//Evento del select ASC/DESC
 orderDirection.addEventListener('change', () => {
   option.orderDirection = document.getElementById("orderDirection").value;
   const resultadoFinal = processCohortData(option);

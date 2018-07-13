@@ -1,5 +1,13 @@
 # Data Dashboard Laboratoria 👩‍💻
 
+## Contenido de la plataforma 📓
+
+*A través de una investigación con los usuarios finales se definió información relevante con la que se podía interactuar cómo el porcentaje de ejercicios resueltos de cada estudiante, la cantidad de lecturas leídas y quizzes resueltos. Estos datos se pueden filtrar por alumna y ordenar de forma ascendente o descendente.*
+
+*Los descubrimos mediante: la exposición de requerimientos del usuario, la entrevista y el READme.md del poyecto.*
+
+*Es importante recalcar que la información podrá visualizarce previamente se haya ingresado con usuario y contraseña corporativa.*
+
 ## Acerca de los usuarios 👫
 
 *Los usuarios son las Training Managers de Laboratoria y cualquier otra persona a la que se le asigne el rol de visualizar la información de las estudiantes.*
@@ -10,15 +18,6 @@
 
 *Contar con un dashboard les brindá accesibilidad a piezas de información importantes en lugar de trabajar con data acumulada.*
 *Es importante tener visualizaciones para entender mejor, hacer seguimiento y finalmente tomar decisiones apropiadas sobre información relevante sobretodo sí tiene repercusión sobre los resultados que buscan.*
-
-
-## Contenido de la plataforma 📓
-
-*A través de una investigación con los usuarios finales se definió información relevante con la que se podía interactuar cómo el porcentaje de ejercicios resueltos de cada estudiante, la cantidad de lecturas leídas y quizzes resueltos. Estos datos se pueden filtrar por alumna y ordenar de forma ascendente o descendente.*
-
-*Los descubrimos mediante: la exposición de requerimientos del usuario, la entrevista y el READme.md del poyecto.*
-
-*Es importante recalcar que la información podrá visualizarce previamente se haya ingresado con usuario y contraseña corporativa.*
 
 Entrevista
 
